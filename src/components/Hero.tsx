@@ -3,17 +3,16 @@ export function Hero() {
     <section className="bg-[#111715] px-6 py-24 text-zinc-100 sm:px-10 lg:px-16">
       <div className="mx-auto max-w-4xl">
         <p className="mb-4 text-sm uppercase tracking-[0.2em] text-emerald-300/80">
-          Marketing + Data + Performance
+          Marketing + Data Analysis
         </p>
         <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-6xl">
           Charlie Gall
         </h1>
         <p className="mt-5 text-xl font-medium text-emerald-200/90 sm:text-2xl">
-          Marketing. Data. Performance.
+          Marketing. Data Analysis.
         </p>
         <p className="mt-6 max-w-2xl text-base leading-7 text-zinc-300 sm:text-lg">
-          I build data-driven growth systems and optimize performance — in
-          brands and in sport.
+          I use data and analytics to understand customers.
         </p>
 
         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
