@@ -2,9 +2,25 @@ type Project = {
   title: string;
   description: string;
   tags: string[];
+  links?: ProjectLink[];
+};
+
+type ProjectLink = {
+  label: string;
+  href: string;
 };
 
 const projects: Project[] = [
+  {
+  title: "Sales Data Analysis + Churn Modeling (OMIS 114 Capstone)",
+  description:
+    "Built a Python data pipeline (cleaning, outlier handling, feature engineering) and trained a Random Forest churn model (ROC AUC ~0.79) on a 10k-row retail dataset to drive category and retention recommendations.",
+  tags: ["Python", "scikit-learn", "EDA", "Random Forest"],
+  links: [
+    { label: "Executive Summary", href: "/Sales_Data_Analysis_Executive_Summary.pdf" },
+    { label: "Full Presentation", href: "/Sales_Data_Analysis_Presentation.pdf" },
+  ],
+},
   {
     title: "Snapchat DMA Campaign Optimization (Project Unloaded)",
     description:
@@ -60,6 +76,7 @@ export function Projects() {
               <p className="mt-3 text-sm leading-6 text-zinc-300">
                 {project.description}
               </p>
+              
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
@@ -70,6 +87,25 @@ export function Projects() {
                   </span>
                 ))}
               </div>
+              {project.links?.length ? (
+              <div className="mt-4 flex flex-wrap gap-3">
+                {project.links.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={
+                      link.label === "Executive Summary"
+                        ? "rounded-xl bg-emerald-300 text-black px-3 py-1.5 text-sm font-medium hover:opacity-90 transition"
+                        : "rounded-xl border border-white/15 px-3 py-1.5 text-sm text-zinc-100 hover:bg-white/5 transition"
+                    }
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            ) : null}
             </article>
           ))}
         </div>
