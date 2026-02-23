@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Charlie Gall | Marketing + Data",
   description:
-    "Portfolio of Charlie Gall, a marketing and data operator focused on performance analytics and growth execution.",
+    "Charlie Gall's portfolio: friendly, practical marketing and analytics projects focused on what works.",
 };
 
 export default function RootLayout({

@@ -1,16 +1,12 @@
 import { Nav } from "@/components/Nav";
-import { Hero } from "@/components/Hero";
-import { Projects } from "@/components/Projects";
 import { Contact } from "@/components/Contact";
 
-export default function Home() {
+export default function ContactPage() {
   return (
     <main id="top" className="relative min-h-screen overflow-x-clip text-zinc-900">
       <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-px bg-gradient-to-r from-transparent via-sky-500/25 to-transparent" />
       <div className="relative z-10">
         <Nav />
-        <Hero />
-        <Projects />
         <Contact />
       </div>
     </main>

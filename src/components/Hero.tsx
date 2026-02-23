@@ -1,55 +1,58 @@
+import Image from "next/image";
+
 export function Hero() {
   return (
-    <section className="px-6 pb-20 pt-14 sm:px-10 lg:px-16 lg:pt-20">
-      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-end">
+    <section className="relative isolate overflow-hidden px-6 pb-20 pt-14 sm:px-10 lg:px-16 lg:pt-20">
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-80"
+        style={{ backgroundImage: "url('/images/golden-gate.jpg')" }}
+        aria-hidden="true"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(246,250,255,0.62)_0%,rgba(246,250,255,0.66)_46%,rgba(246,250,255,0.74)_100%)]" />
+
+      <div className="relative z-10 mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div>
-          <p className="mb-5 inline-flex items-center rounded-full border border-emerald-300/35 bg-emerald-300/10 px-4 py-1.5 text-xs uppercase tracking-[0.22em] text-emerald-100">
-            Marketing + Data Analysis
-          </p>
-          <h1 className="text-5xl font-semibold tracking-[-0.03em] text-white sm:text-6xl md:text-7xl">
+          <h1 className="text-5xl font-semibold tracking-[-0.03em] text-zinc-900 sm:text-6xl md:text-7xl">
             Charlie Gall
           </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-zinc-300 sm:text-xl">
-            Performance-minded marketer blending analytics, creative testing, and operational discipline to build campaigns that scale.
+          <p className="mt-4 text-sm uppercase tracking-[0.2em] text-sky-800/80 sm:text-base">
+            Marketing &times; Analytics &times; Triathlon
+          </p>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-700 sm:text-xl">
+            Hi, I&apos;m Charlie! Right now I&apos;m studying marketing and data analysis at Santa Clara University while leading campaign analytics for a
+            national nonprofit. Professionally, I like to build data-driven marketing systems to understand people&apos;s behavior. Outside of
+            work, I train and coach triathlon, a discipline that shapes a big part of who I am.
           </p>
 
           <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
               href="#projects"
-              className="inline-flex items-center justify-center rounded-lg bg-emerald-300 px-6 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-200"
+              className="inline-flex items-center justify-center rounded-lg bg-sky-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4f8f6]"
             >
-              Explore Projects
+              View Projects
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center justify-center rounded-lg border border-emerald-300/40 px-6 py-3 text-sm font-semibold text-zinc-100 transition hover:border-emerald-200/70 hover:bg-emerald-300/10"
+              className="inline-flex items-center justify-center rounded-lg border border-sky-700/25 bg-white/60 px-6 py-3 text-sm font-semibold text-zinc-800 transition hover:border-sky-700/45 hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/90 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4f8f6]"
             >
-              Start a Conversation
+              Contact
             </a>
           </div>
         </div>
 
-        <aside className="relative overflow-hidden rounded-2xl border border-emerald-300/25 bg-[#151e1b]/90 p-6 sm:p-7">
-          <div className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-emerald-300/15 blur-3xl" />
-          <p className="text-xs uppercase tracking-[0.22em] text-emerald-100/85">Operator Snapshot</p>
-          <div className="mt-5 grid grid-cols-2 gap-4">
-            <div className="rounded-xl border border-white/10 bg-black/20 p-4">
-              <p className="text-2xl font-semibold text-white">6+</p>
-              <p className="mt-1 text-xs uppercase tracking-[0.18em] text-zinc-400">Project Verticals</p>
-            </div>
-            <div className="rounded-xl border border-white/10 bg-black/20 p-4">
-              <p className="text-2xl font-semibold text-white">0.79</p>
-              <p className="mt-1 text-xs uppercase tracking-[0.18em] text-zinc-400">Churn AUC</p>
-            </div>
-            <div className="rounded-xl border border-white/10 bg-black/20 p-4">
-              <p className="text-2xl font-semibold text-white">SQL</p>
-              <p className="mt-1 text-xs uppercase tracking-[0.18em] text-zinc-400">Analytics Core</p>
-            </div>
-            <div className="rounded-xl border border-white/10 bg-black/20 p-4">
-              <p className="text-2xl font-semibold text-white">Snap</p>
-              <p className="mt-1 text-xs uppercase tracking-[0.18em] text-zinc-400">Paid Media</p>
-            </div>
-          </div>
+        <aside
+          aria-label="Charlie Gall profile photo"
+          className="relative overflow-hidden rounded-2xl border border-sky-700/15 bg-white/65 p-3 shadow-[0_14px_34px_-28px_rgba(14,165,233,0.08)] sm:p-4"
+        >
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/25 to-sky-300/0" />
+          <Image
+            src="/images/Profile.jpg"
+            alt="Charlie Gall"
+            width={900}
+            height={1200}
+            className="relative h-[340px] w-full rounded-xl object-cover object-center sm:h-[420px]"
+            priority={false}
+          />
         </aside>
       </div>
     </section>

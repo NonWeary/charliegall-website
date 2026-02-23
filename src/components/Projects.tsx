@@ -14,41 +14,41 @@ const projects: Project[] = [
   {
     title: "Sales Data Analysis + Churn Modeling (OMIS 114 Capstone)",
     description:
-      "Built a Python data pipeline (cleaning, outlier handling, feature engineering) and trained a Random Forest churn model (ROC AUC ~0.79) on a 10k-row retail dataset to drive category and retention recommendations.",
+      "Built a Python pipeline to clean and prep a 10k-row retail dataset, then trained a Random Forest churn model (ROC AUC ~0.79) to guide retention and product-category decisions.",
     tags: ["Python", "scikit-learn", "Random Forest"],
     links: [
-      { label: "Executive Summary", href: "/Sales_Data_Analysis_Executive_Summary.pdf" },
-      { label: "Full Presentation", href: "/Sales_Data_Analysis_Presentation.pdf" },
+      { label: "Executive Summary", href: "/pdfs/Sales_Data_Analysis_Executive_Summary.pdf" },
+      { label: "Full Presentation", href: "/pdfs/Sales_Data_Analysis_Presentation.pdf" },
     ],
   },
   {
     title: "Snapchat DMA Campaign Optimization (Project Unloaded)",
     description:
-      "Built and optimized Snapchat campaigns with clear naming conventions, pacing/bid adjustments, and delivery troubleshooting to hit reach and frequency targets across DMAs.",
+      "Ran and tuned Snapchat campaigns across DMAs, including pacing and bid updates, to keep delivery healthy and hit reach/frequency goals.",
     tags: ["Snap Ads", "Paid Media", "Optimization"],
   },
   {
     title: "Strava Review NLP: Churn + Paywall Signals",
     description:
-      "Collected and cleaned App Store reviews, then used TF-IDF and sentiment workflows to identify subscription/paywall themes most associated with negative sentiment and churn signals.",
+      "Pulled and cleaned App Store reviews, then used TF-IDF and sentiment analysis to find paywall and subscription themes tied to churn risk.",
     tags: ["NLP", "TF-IDF", "R/Python"],
   },
   {
     title: "Instacart SQL Segmentation",
     description:
-      "Queried and segmented customer behavior using SQL + Python to surface retention and basket patterns and produce actionable cohort insights.",
+      "Used SQL and Python to segment customer behavior, spot retention and basket trends, and turn those into usable cohort insights.",
     tags: ["SQL", "Segmentation", "Python"],
   },
   {
     title: "Triathlon Performance Tracking System",
     description:
-      "Built a simple performance system to track training load, intensity, and progress over time to support race prep and coaching decisions.",
+      "Built a lightweight tracking system for training load, intensity, and progress to support race prep and coaching check-ins.",
     tags: ["Analytics", "Performance", "Systems"],
   },
   {
     title: "Netflix International Expansion Framework",
     description:
-      "Developed external/internal analysis support for a case strategy: international growth via dubbing/accessibility and ad-tier scaling in new markets.",
+      "Built a case framework for international growth, focused on dubbing/accessibility and ad-tier expansion in new markets.",
     tags: ["Strategy", "Market Analysis", "Slides"],
   },
 ];
@@ -57,30 +57,30 @@ export function Projects() {
   return (
     <section id="projects" className="px-6 py-20 sm:px-10 lg:px-16">
       <div className="mx-auto max-w-6xl">
-        <div className="flex items-end justify-between gap-4 border-b border-white/10 pb-6">
+        <div className="flex items-end justify-between gap-4 border-b border-zinc-900/10 pb-6">
           <div>
-            <p className="text-xs uppercase tracking-[0.24em] text-emerald-100/85">Selected Work</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">Projects</h2>
+            <p className="text-xs uppercase tracking-[0.24em] text-sky-800/80">Selected Work</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">A few things I&apos;ve worked on</h2>
           </div>
-          <p className="hidden text-sm text-zinc-400 sm:block">6 featured builds</p>
+          <p className="hidden text-sm text-zinc-500 sm:block">6 recent projects</p>
         </div>
 
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <article
               key={project.title}
-              className="group relative overflow-hidden rounded-2xl border border-emerald-300/20 bg-[#141d1a]/70 p-5 transition duration-300 hover:-translate-y-1 hover:border-emerald-200/50 hover:bg-[#17231f]"
+              className="group relative overflow-hidden rounded-2xl border border-sky-700/15 bg-white/80 p-5 transition duration-300 hover:-translate-y-1 hover:border-sky-600/30 hover:bg-white"
             >
-              <div className="pointer-events-none absolute -right-14 -top-14 h-28 w-28 rounded-full bg-emerald-300/10 blur-2xl transition group-hover:bg-emerald-300/20" />
-              <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-400">Project {String(index + 1).padStart(2, "0")}</p>
-              <h3 className="mt-3 text-lg font-semibold text-zinc-100">{project.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-zinc-300">{project.description}</p>
+              <div className="pointer-events-none absolute -right-14 -top-14 h-28 w-28 rounded-full bg-sky-300/5 blur-2xl transition group-hover:bg-sky-300/8" />
+              <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-500">Project {String(index + 1).padStart(2, "0")}</p>
+              <h3 className="mt-3 text-lg font-semibold text-zinc-900">{project.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-zinc-700">{project.description}</p>
 
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-emerald-300/30 bg-emerald-300/5 px-2.5 py-1 text-xs font-medium text-emerald-100"
+                    className="rounded-full border border-sky-700/20 bg-sky-50 px-2.5 py-1 text-xs font-medium text-sky-800"
                   >
                     {tag}
                   </span>
@@ -97,8 +97,8 @@ export function Projects() {
                       rel="noopener noreferrer"
                       className={
                         link.label === "Executive Summary"
-                          ? "rounded-xl bg-emerald-300 px-3 py-1.5 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-200"
-                          : "rounded-xl border border-white/20 px-3 py-1.5 text-sm text-zinc-100 transition hover:bg-white/5"
+                          ? "rounded-xl bg-sky-500 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-sky-600"
+                          : "rounded-xl border border-zinc-900/15 bg-white/70 px-3 py-1.5 text-sm text-zinc-700 transition hover:bg-sky-50"
                       }
                     >
                       {link.label}
@@ -113,3 +113,4 @@ export function Projects() {
     </section>
   );
 }
+
