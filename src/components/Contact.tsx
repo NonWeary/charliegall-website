@@ -8,7 +8,7 @@ export function Contact() {
             Want to connect?
           </h2>
           <p className="mt-4 max-w-xl text-zinc-700">
-            I&apos;m always up for meeting new people and talking shop. Open to project work in anything marketing analytics related, cheers.
+            I&apos;m always up for meeting new people and talking shop. Open to project work in anything marketing or analytics related, cheers.
           </p>
         </div>
 
@@ -28,6 +28,14 @@ export function Contact() {
             LinkedIn
           </a>
           <a
+            href="https://github.com/NonWeary"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-xl border border-zinc-900/15 bg-white/70 px-4 py-3 text-center text-sm font-medium text-zinc-700 transition hover:bg-sky-50"
+          >
+            GitHub
+          </a>
+          <a
             href="/pdfs/Charlie_Gall_Resume.pdf"
             className="rounded-xl border border-zinc-900/15 bg-white/70 px-4 py-3 text-center text-sm font-medium text-zinc-700 transition hover:bg-sky-50"
           >
@@ -38,4 +46,3 @@ export function Contact() {
     </section>
   );
 }
-

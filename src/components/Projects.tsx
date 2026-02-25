@@ -32,7 +32,7 @@ const projects: Project[] = [
     title: "",
     description: "",
     tags: [],
-    imageSrc: "/images/Projects_Loading.png",
+    imageSrc: "/images/Loading%20Projects%20GIF%20%281%29.gif",
     imageAlt: "Projects Loading",
     imageOnly: true,
   },
@@ -123,4 +123,3 @@ export function Projects() {
     </section>
   );
 }
-
