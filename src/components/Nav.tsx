@@ -5,7 +5,7 @@ export function Nav() {
     <header className="sticky top-0 z-50 border-b border-sky-900/10 bg-white/78 backdrop-blur-xl">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <Link href="/" className="group flex items-center gap-3">
-          <span className="text-sm font-semibold tracking-[0.14em] text-zinc-900 sm:text-base">Charlie Gall</span>
+          <span className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-900 sm:text-base">Charlie Gall</span>
         </Link>
 
         <nav className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-zinc-600 sm:gap-3 sm:text-sm">

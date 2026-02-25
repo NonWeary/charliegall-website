@@ -8,7 +8,7 @@ export function Contact() {
             Want to connect?
           </h2>
           <p className="mt-4 max-w-xl text-zinc-700">
-            I&apos;m always up for meeting new people and talking shop. Open to internships and project work in marketing analytics, growth testing, and reporting.
+            I&apos;m always up for meeting new people and talking shop. Open to project work in anything marketing analytics related, cheers.
           </p>
         </div>
 

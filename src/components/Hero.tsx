@@ -19,7 +19,7 @@ export function Hero() {
             Marketing &times; Analytics &times; Triathlon
           </p>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-700 sm:text-xl">
-            Hi, I&apos;m Charlie! Right now I&apos;m studying marketing and data analysis at Santa Clara University while leading campaign analytics for a
+            Hi, I&apos;m Charlie! Right now I&apos;m studying marketing and data analysis at Santa Clara University while leading marketing campaign analytics for a
             national nonprofit. Professionally, I like to build data-driven marketing systems to understand people&apos;s behavior. Outside of
             work, I train and coach triathlon, a discipline that shapes a big part of who I am.
           </p>
