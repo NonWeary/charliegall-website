@@ -13,9 +13,21 @@ type Project = {
 type ProjectLink = {
   label: string;
   href: string;
+  internal?: boolean;
 };
 
 const projects: Project[] = [
+  {
+    title: "Strava App Review Sentiment Analysis",
+    description:
+      "Analyzed 2,000 Google Play reviews using TF-IDF and Random Forest models in R to identify what language patterns predict positive vs. negative sentiment.",
+    tags: ["R", "TF-IDF", "Random Forest", "NLP"],
+    imageSrc: "/images/Strava_Review_Analysis_Cover_Image.png",
+    imageAlt: "Strava App Review Sentiment Analysis cover image",
+    links: [
+      { label: "View Dashboard", href: "/strava-sentiment", internal: true },
+    ],
+  },
   {
     title: "Sales Data Analysis + Churn Modeling (OMIS 114 Capstone)",
     description:
@@ -32,7 +44,7 @@ const projects: Project[] = [
     title: "",
     description: "",
     tags: [],
-    imageSrc: "/images/Loading%20Projects%20GIF%20%281%29.gif",
+    imageSrc: "/images/Projects_Loading.png",
     imageAlt: "Projects Loading",
     imageOnly: true,
   },
@@ -102,10 +114,9 @@ export function Projects() {
                       <a
                         key={link.href}
                         href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        {...(!link.internal && { target: "_blank", rel: "noopener noreferrer" })}
                         className={
-                          link.label === "Executive Summary"
+                          link.label === "Executive Summary" || link.label === "View Dashboard"
                             ? "rounded-xl bg-sky-500 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-sky-600"
                             : "rounded-xl border border-zinc-900/15 bg-white/70 px-3 py-1.5 text-sm text-zinc-700 transition hover:bg-sky-50"
                         }
@@ -123,3 +134,4 @@ export function Projects() {
     </section>
   );
 }
+
