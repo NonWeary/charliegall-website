@@ -16,7 +16,7 @@ export function Nav() {
             Contact
           </Link>
           <a
-            className="rounded-lg border border-sky-600/30 bg-sky-50 px-3 py-1.5 text-sky-800 transition hover:border-sky-600/50 hover:bg-sky-100"
+            className="rounded-lg border border-sky-500/30 bg-sky-100/70 px-3 py-1.5 text-sky-600 transition hover:border-sky-500/50 hover:bg-sky-100"
             href="/pdfs/Charlie_Gall_Resume.pdf"
           >
             Resume

@@ -27,7 +27,7 @@ export function Hero() {
           <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
               href="#projects"
-              className="inline-flex items-center justify-center rounded-lg bg-sky-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4f8f6]"
+              className="inline-flex items-center justify-center rounded-lg bg-sky-400 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4f8f6]"
             >
               View Projects
             </a>

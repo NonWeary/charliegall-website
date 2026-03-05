@@ -26,6 +26,7 @@ const projects: Project[] = [
     imageAlt: "Strava App Review Sentiment Analysis cover image",
     links: [
       { label: "View Dashboard", href: "/strava-sentiment", internal: true },
+      { label: "Executive Summary", href: "/pdfs/Strava_Sentiment_Executive_Summary.pdf" },
     ],
   },
   {
@@ -36,8 +37,8 @@ const projects: Project[] = [
     imageSrc: "/images/Sales%20Data%20Analysis%20%26%20Churn%20Modeling%20%282%29.png",
     imageAlt: "Sales Data Analysis and Churn Modeling project visual",
     links: [
-      { label: "Executive Summary", href: "/pdfs/Sales_Data_Analysis_Executive_Summary.pdf" },
       { label: "Full Presentation", href: "/pdfs/Sales_Data_Analysis_Presentation.pdf" },
+      { label: "Executive Summary", href: "/pdfs/Sales_Data_Analysis_Executive_Summary.pdf" },
     ],
   },
   {
@@ -116,8 +117,8 @@ export function Projects() {
                         href={link.href}
                         {...(!link.internal && { target: "_blank", rel: "noopener noreferrer" })}
                         className={
-                          link.label === "Executive Summary" || link.label === "View Dashboard"
-                            ? "rounded-xl bg-sky-500 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-sky-600"
+                          link.label === "Full Presentation" || link.label === "View Dashboard"
+                            ? "rounded-xl bg-sky-400 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-sky-500"
                             : "rounded-xl border border-zinc-900/15 bg-white/70 px-3 py-1.5 text-sm text-zinc-700 transition hover:bg-sky-50"
                         }
                       >
