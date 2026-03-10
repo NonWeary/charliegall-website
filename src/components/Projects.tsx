@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type Project = {
   title: string;
@@ -55,12 +56,12 @@ export function Projects() {
   return (
     <section id="projects" className="px-6 py-20 sm:px-10 lg:px-16">
       <div className="mx-auto max-w-6xl">
-        <div className="flex items-end justify-between gap-4 border-b border-zinc-900/10 pb-6">
+        <div className="flex items-end justify-between gap-4 border-b border-zinc-900/10 dark:border-white/10 pb-6">
           <div>
-            <p className="text-xs uppercase tracking-[0.24em] text-sky-800/80">Selected Work</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">A few things I&apos;ve worked on</h2>
+            <p className="text-xs uppercase tracking-[0.24em] text-sky-800/80 dark:text-sky-400/80">Selected Work</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">A few things I&apos;ve worked on</h2>
           </div>
-          <p className="hidden text-sm text-zinc-500 sm:block">2 recent projects</p>
+          <p className="hidden text-sm text-zinc-500 dark:text-zinc-500 sm:block">2 recent projects</p>
         </div>
 
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -68,26 +69,28 @@ export function Projects() {
             project.imageOnly ? (
               <div key={project.imageSrc ?? `project-${index}`}>
                 {project.imageSrc ? (
-                  <Image
-                    src={project.imageSrc}
-                    alt={project.imageAlt ?? project.title}
-                    width={1200}
-                    height={675}
-                    className="h-auto w-full rounded-xl border border-sky-700/15 object-contain"
-                  />
+                  <Link href="/not-found">
+                    <Image
+                      src={project.imageSrc}
+                      alt={project.imageAlt ?? project.title}
+                      width={1200}
+                      height={675}
+                      className="h-auto w-full rounded-xl border border-sky-700/15 object-contain transition hover:opacity-80 dark:border-white/10"
+                    />
+                  </Link>
                 ) : null}
               </div>
             ) : (
               <article
                 key={project.title}
-                className="group relative overflow-hidden rounded-2xl border border-sky-700/15 bg-white/80 p-5 transition duration-300 hover:-translate-y-1 hover:border-sky-600/30 hover:bg-white"
+                className="group relative overflow-hidden rounded-2xl border border-sky-700/15 bg-white/80 p-5 transition duration-300 hover:-translate-y-1 hover:border-sky-600/30 hover:bg-white dark:bg-zinc-900/70 dark:border-white/10 dark:hover:border-sky-400/25 dark:hover:bg-zinc-900/90"
               >
                 <div className="pointer-events-none absolute -right-14 -top-14 h-28 w-28 rounded-full bg-sky-300/5 blur-2xl transition group-hover:bg-sky-300/8" />
-                <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-500">Project {String(index + 1).padStart(2, "0")}</p>
-                <h3 className="mt-3 text-lg font-semibold text-zinc-900">{project.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-zinc-700">{project.description}</p>
+                <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-500 dark:text-zinc-600">Project {String(index + 1).padStart(2, "0")}</p>
+                <h3 className="mt-3 text-lg font-semibold text-zinc-900 dark:text-zinc-100">{project.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-zinc-700 dark:text-zinc-400">{project.description}</p>
                 {project.imageSrc ? (
-                  <div className="mt-4 overflow-hidden rounded-xl border border-zinc-900/10">
+                  <div className="mt-4 overflow-hidden rounded-xl border border-zinc-900/10 dark:border-white/10">
                     <Image
                       src={project.imageSrc}
                       alt={project.imageAlt ?? project.title}
@@ -102,7 +105,7 @@ export function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-sky-700/20 bg-sky-50 px-2.5 py-1 text-xs font-medium text-sky-800"
+                      className="rounded-full border border-sky-700/20 bg-sky-50 px-2.5 py-1 text-xs font-medium text-sky-800 dark:border-sky-400/20 dark:bg-sky-900/30 dark:text-sky-300"
                     >
                       {tag}
                     </span>
@@ -119,7 +122,7 @@ export function Projects() {
                         className={
                           link.label === "Full Presentation" || link.label === "View Dashboard"
                             ? "rounded-xl bg-sky-400 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-sky-500"
-                            : "rounded-xl border border-zinc-900/15 bg-white/70 px-3 py-1.5 text-sm text-zinc-700 transition hover:bg-sky-50"
+                            : "rounded-xl border border-zinc-900/15 bg-white/70 px-3 py-1.5 text-sm text-zinc-700 transition hover:bg-sky-50 dark:border-white/15 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
                         }
                       >
                         {link.label}

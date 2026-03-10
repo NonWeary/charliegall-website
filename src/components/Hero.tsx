@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { NonWearyEasterEgg } from "./NonWearyEasterEgg";
+import { StravaEasterEgg } from "./StravaEasterEgg";
 
 export function Hero() {
   return (
@@ -8,17 +10,17 @@ export function Hero() {
         style={{ backgroundImage: "url('/images/golden-gate.jpg')" }}
         aria-hidden="true"
       />
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(246,250,255,0.62)_0%,rgba(246,250,255,0.66)_46%,rgba(246,250,255,0.74)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(246,250,255,0.62)_0%,rgba(246,250,255,0.66)_46%,rgba(246,250,255,0.74)_100%)] dark:opacity-30" />
 
       <div className="relative z-10 mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div>
-          <h1 className="text-5xl font-semibold tracking-[-0.03em] text-zinc-900 sm:text-6xl md:text-7xl">
+          <h1 className="text-5xl font-semibold tracking-[-0.03em] text-zinc-900 dark:text-zinc-100 sm:text-6xl md:text-7xl">
             Charlie Gall
           </h1>
-          <p className="mt-4 text-sm uppercase tracking-[0.2em] text-sky-800/80 sm:text-base">
+          <p className="mt-4 text-sm uppercase tracking-[0.2em] text-sky-800/80 dark:text-sky-300/80 sm:text-base">
             Marketing &times; Analytics &times; Triathlon
           </p>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-700 sm:text-xl">
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-700 dark:text-zinc-300 sm:text-xl">
             Hi, I&apos;m Charlie! Right now I&apos;m studying marketing and data analysis at Santa Clara University while leading marketing campaign analytics for a
             national nonprofit. Professionally, I like to build data-driven marketing systems to understand people&apos;s behavior. Outside of
             work, I train and coach triathlon, a discipline that shapes a big part of who I am.
@@ -33,7 +35,7 @@ export function Hero() {
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center justify-center rounded-lg border border-sky-700/25 bg-white/60 px-6 py-3 text-sm font-semibold text-zinc-800 transition hover:border-sky-700/45 hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/90 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4f8f6]"
+              className="inline-flex items-center justify-center rounded-lg border border-sky-700/25 bg-white/60 px-6 py-3 text-sm font-semibold text-zinc-800 transition hover:border-sky-700/45 hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/90 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4f8f6] dark:border-white/20 dark:bg-white/10 dark:text-zinc-200 dark:hover:border-white/30 dark:hover:bg-white/15"
             >
               Contact
             </a>
@@ -42,7 +44,7 @@ export function Hero() {
 
         <aside
           aria-label="Charlie Gall profile photo"
-          className="relative overflow-hidden rounded-2xl border border-sky-700/15 bg-white/65 p-3 shadow-[0_14px_34px_-28px_rgba(14,165,233,0.08)] sm:p-4"
+          className="relative overflow-hidden rounded-2xl border border-sky-700/15 bg-white/65 p-3 shadow-[0_14px_34px_-28px_rgba(14,165,233,0.08)] sm:p-4 dark:border-white/10 dark:bg-zinc-900/50"
         >
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/25 to-sky-300/0" />
           <Image
@@ -55,6 +57,8 @@ export function Hero() {
           />
         </aside>
       </div>
+      <NonWearyEasterEgg />
+      <StravaEasterEgg />
     </section>
   );
 }
