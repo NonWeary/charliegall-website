@@ -12,6 +12,9 @@ export function Nav() {
           <Link className="rounded-lg px-2 py-1 transition hover:bg-sky-100/60 hover:text-zinc-900 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-200" href="/#projects">
             Projects
           </Link>
+          <Link className="rounded-lg px-2 py-1 transition hover:bg-sky-100/60 hover:text-zinc-900 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-200" href="/#about">
+            About
+          </Link>
           <Link className="rounded-lg px-2 py-1 transition hover:bg-sky-100/60 hover:text-zinc-900 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-200" href="/contact">
             Contact
           </Link>
