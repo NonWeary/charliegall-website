@@ -1,9 +1,27 @@
+import Image from "next/image";
+
 export function About() {
   return (
     <section id="about" className="px-6 pb-24 pt-14 sm:px-10 lg:px-16">
       <div className="mx-auto max-w-6xl rounded-2xl border border-sky-700/15 bg-white/82 p-7 sm:p-9 dark:border-white/10 dark:bg-zinc-900/70">
-        <p className="text-xs uppercase tracking-[0.22em] text-sky-800/80 dark:text-sky-400/80">About</p>
-        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">My background and philosophy</h2>
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
+          <div className="flex-shrink-0 self-start">
+            <div className="h-24 w-24 overflow-hidden rounded-full border-2 border-sky-400/40 shadow-md sm:h-28 sm:w-28">
+              <Image
+                src="/images/Profile.jpg"
+                alt="Charlie Gall"
+                width={112}
+                height={112}
+                className="h-full w-full object-cover object-center"
+              />
+            </div>
+          </div>
+
+          <div className="flex-1">
+            <p className="text-xs uppercase tracking-[0.22em] text-sky-800/80 dark:text-sky-400/80">About</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">My background and philosophy</h2>
+          </div>
+        </div>
 
         <div className="mt-6 space-y-5 text-zinc-700 dark:text-zinc-300">
           <p>
