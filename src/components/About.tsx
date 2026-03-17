@@ -20,6 +20,7 @@ export function About() {
           <div className="flex-1">
             <p className="text-xs uppercase tracking-[0.22em] text-sky-800/80 dark:text-sky-400/80">About</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">My background and philosophy</h2>
+            <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">Sammamish, WA &rarr; Santa Clara, CA</p>
           </div>
         </div>
 
