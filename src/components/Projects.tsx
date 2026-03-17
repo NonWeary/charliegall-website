@@ -35,11 +35,23 @@ const projects: Project[] = [
     description:
       "Built a Python pipeline to clean and prep a 10k-row retail dataset, then trained a Random Forest churn model (ROC AUC ~0.79) to guide retention and product-category decisions.",
     tags: ["Python", "scikit-learn", "Random Forest"],
-    imageSrc: "/images/Sales%20Data%20Analysis%20%26%20Churn%20Modeling%20%282%29.png",
+    imageSrc: "/images/Sales%20Data%20Analysis%20Cover%20Image.png",
     imageAlt: "Sales Data Analysis and Churn Modeling project visual",
     links: [
       { label: "Full Presentation", href: "/pdfs/Sales_Data_Analysis_Presentation.pdf" },
       { label: "Executive Summary", href: "/pdfs/Sales_Data_Analysis_Executive_Summary.pdf" },
+    ],
+  },
+  {
+    title: "SCU Triathlon Race Results",
+    description:
+      "A race results platform built for Santa Clara triathletes — supports custom results uploads that map directly to Supabase for structured, queryable storage and clean display.",
+    tags: ["Supabase", "Next.js", "Data Pipeline"],
+    imageSrc: "/images/SCU_Tri_App_Cover_Image.png",
+    imageAlt: "SCU Triathlon Race Results app cover image",
+    links: [
+      { label: "View App", href: "https://scutri.vercel.app/" },
+      { label: "Executive Summary", href: "/pdfs/SCU_Triathlon_Results_Executive_Summary.pdf" },
     ],
   },
   {
@@ -120,7 +132,7 @@ export function Projects() {
                         href={link.href}
                         {...(!link.internal && { target: "_blank", rel: "noopener noreferrer" })}
                         className={
-                          link.label === "Full Presentation" || link.label === "View Dashboard"
+                          link.label === "Full Presentation" || link.label === "View Dashboard" || link.label === "View App"
                             ? "rounded-xl bg-sky-400 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-sky-500"
                             : "rounded-xl border border-zinc-900/15 bg-white/70 px-3 py-1.5 text-sm text-zinc-700 transition hover:bg-sky-50 dark:border-white/15 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
                         }

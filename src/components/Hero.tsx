@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { NonWearyEasterEgg } from "./NonWearyEasterEgg";
 import { StravaEasterEgg } from "./StravaEasterEgg";
+import { FeaturedProjects } from "./FeaturedProjects";
 
 export function Hero() {
   return (
@@ -42,20 +42,7 @@ export function Hero() {
           </div>
         </div>
 
-        <aside
-          aria-label="Charlie Gall profile photo"
-          className="relative overflow-hidden rounded-2xl border border-sky-700/15 bg-white/65 p-3 shadow-[0_14px_34px_-28px_rgba(14,165,233,0.08)] sm:p-4 dark:border-white/10 dark:bg-zinc-900/50"
-        >
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/25 to-sky-300/0" />
-          <Image
-            src="/images/Profile.jpg"
-            alt="Charlie Gall"
-            width={900}
-            height={1200}
-            className="relative h-[340px] w-full rounded-xl object-cover object-center sm:h-[420px]"
-            priority={false}
-          />
-        </aside>
+        <FeaturedProjects />
       </div>
       <NonWearyEasterEgg />
       <StravaEasterEgg />
