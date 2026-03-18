@@ -117,7 +117,7 @@ const topicClusters = [
   },
 ];
 
-const topicColorMap: Record<string, { border: string; bg: string; tag: string; tagText: string; dot: string; label: string }> = {
+const topicColorMap: Record<string, { border: string; bg: string; tag: string; dot: string; label: string }> = {
   red:    { border: "border-red-100",    bg: "bg-red-50/60",    tag: "border-red-200 bg-white text-red-700",      dot: "bg-red-400",    label: "text-red-700"    },
   sky:    { border: "border-sky-100",    bg: "bg-sky-50/60",    tag: "border-sky-200 bg-white text-sky-700",      dot: "bg-sky-400",    label: "text-sky-700"    },
   emerald:{ border: "border-emerald-100",bg: "bg-emerald-50/60",tag: "border-emerald-200 bg-white text-emerald-700",dot:"bg-emerald-400",label: "text-emerald-700"},
