@@ -60,65 +60,71 @@ const positiveTokens = [
   { token: "running", coefficient: 0.207 },
 ];
 
-const negativeClusters = [
+
+const featureImportanceData = [
+  { feature: "TF-IDF Score",   importance: 350.921 },
+  { feature: "Hour of Day",    importance: 70.465 },
+  { feature: "Review Length",  importance: 58.712 },
+  { feature: "Topic 1",        importance: 48.712 },
+  { feature: "Word Count",     importance: 45.947 },
+  { feature: "Time of Day",    importance: 25.777 },
+  { feature: "Topic 2",        importance: 21.638 },
+  { feature: "Topic 5",        importance: 19.578 },
+  { feature: "App Version",    importance: 18.384 },
+  { feature: "Topic 6",        importance: 10.883 },
+  { feature: "Topic 4",        importance: 9.646 },
+  { feature: "Topic 3",        importance: 9.030 },
+  { feature: "Weekend",        importance: 3.267 },
+  { feature: "Season",         importance: 2.244 },
+];
+
+const topicClusters = [
   {
-    name: "Authentication & Onboarding Failures",
-    tokens: ["signed", "unable", "isn", "won", "received"],
-    insight:
-      "Users consistently fail during sign-in and initial setup. Authentication is the most damaging friction point in the entire experience.",
+    id: "Topic 1",
+    label: "Bug Reports & Account Issues",
+    color: "red",
+    tokens: ["phone", "account", "record", "activity", "issue", "data", "fix", "update"],
   },
   {
-    name: "Upload & Server Outages",
-    tokens: ["upload", "server", "errors"],
-    insight:
-      "Activity upload failures and server errors are directly visible to users and break the core loop of record-and-share.",
+    id: "Topic 2",
+    label: "Performance Tracking",
+    color: "sky",
+    tokens: ["track", "running", "accurate", "tracking", "progress", "activities", "easy", "pace"],
   },
   {
-    name: "Account & Access Problems",
-    tokens: ["account", "issue"],
-    insight:
-      "Ongoing account management issues compound onboarding friction, suggesting systemic identity/auth infrastructure problems.",
+    id: "Topic 3",
+    label: "Social & Wellness",
+    color: "emerald",
+    tokens: ["nice", "social", "fitness", "health", "application", "tracking", "exercise", "connect"],
   },
   {
-    name: "Crashes & Forced Upsell",
-    tokens: ["uninstalled", "constantly"],
-    insight:
-      "App instability and aggressive paywalls drive uninstalls. Users explicitly cite these as deal-breakers in their reviews.",
+    id: "Topic 4",
+    label: "GPS & Activity Recording",
+    color: "violet",
+    tokens: ["time", "distance", "running", "tracking", "activity", "recording", "gps", "rides"],
   },
   {
-    name: "Accuracy & Measurement Issues",
-    tokens: ["mile", "minutes", "time"],
-    insight:
-      "Inaccurate GPS and pace data undermine the product's core promise for serious athletes who depend on precise metrics.",
+    id: "Topic 5",
+    label: "Monetization & Paywall",
+    color: "amber",
+    tokens: ["subscription", "pay", "features", "free", "paid", "paywall", "premium", "data"],
+  },
+  {
+    id: "Topic 6",
+    label: "Positive Experience & Sharing",
+    color: "teal",
+    tokens: ["love", "free", "features", "garmin", "trial", "map", "money", "share"],
   },
 ];
 
-const positiveClusters = [
-  {
-    name: "Tracking & Core Utility",
-    tokens: ["tracking", "track", "fitness", "exercise"],
-    insight:
-      "When the product works, users love it for exactly what it is: a reliable fitness tracker. This is the core value prop in action.",
-  },
-  {
-    name: "Social & Community",
-    tokens: ["friends", "motivates", "motivated", "world"],
-    insight:
-      "Strava's social layer is a genuine differentiator. Users don't just track—they compete, cheer, and stay accountable together.",
-  },
-  {
-    name: "Ease of Use",
-    tokens: ["easy", "nice", "excellent", "helpful", "awesome"],
-    insight:
-      "When onboarding succeeds, users find the app intuitive and well-designed. The UX itself isn't the problem—reliability is.",
-  },
-  {
-    name: "Activity Culture",
-    tokens: ["walks", "trail", "running"],
-    insight:
-      "Positive reviews span all activity types. Strava's brand is broader than running—it's the home for all outdoor fitness culture.",
-  },
-];
+const topicColorMap: Record<string, { border: string; bg: string; tag: string; tagText: string; dot: string; label: string }> = {
+  red:    { border: "border-red-100",    bg: "bg-red-50/60",    tag: "border-red-200 bg-white text-red-700",      dot: "bg-red-400",    label: "text-red-700"    },
+  sky:    { border: "border-sky-100",    bg: "bg-sky-50/60",    tag: "border-sky-200 bg-white text-sky-700",      dot: "bg-sky-400",    label: "text-sky-700"    },
+  emerald:{ border: "border-emerald-100",bg: "bg-emerald-50/60",tag: "border-emerald-200 bg-white text-emerald-700",dot:"bg-emerald-400",label: "text-emerald-700"},
+  violet: { border: "border-violet-100", bg: "bg-violet-50/60", tag: "border-violet-200 bg-white text-violet-700", dot: "bg-violet-400", label: "text-violet-700"  },
+  amber:  { border: "border-amber-100",  bg: "bg-amber-50/60",  tag: "border-amber-200 bg-white text-amber-700",  dot: "bg-amber-400",  label: "text-amber-700"  },
+  teal:   { border: "border-teal-100",   bg: "bg-teal-50/60",   tag: "border-teal-200 bg-white text-teal-700",    dot: "bg-teal-400",   label: "text-teal-700"   },
+};
 
 const methodologySteps = [
   {
@@ -143,8 +149,18 @@ const methodologySteps = [
   },
   {
     step: "05",
+    label: "Topic Modeling (LDA)",
+    detail: "Latent Dirichlet Allocation applied to review text — 6 latent topics extracted and used as features",
+  },
+  {
+    step: "06",
+    label: "Combination Model",
+    detail: "TF-IDF sentiment score fed into Random Forest alongside behavioral features — accuracy 83.25%, AUC 0.9124",
+  },
+  {
+    step: "07",
     label: "Findings",
-    detail: "Top tokens by LASSO coefficient reveal what language separates happy users from frustrated ones",
+    detail: "Feature importance and LASSO coefficients reveal what language and behavioral signals drive each sentiment class",
   },
 ];
 
@@ -250,7 +266,7 @@ export function StravaDashboard() {
         <h1 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">
           Strava App Review Sentiment Analysis
         </h1>
-        <p className="mt-3 max-w-2xl text-base leading-7 text-zinc-600">
+        <p className="mt-3 text-base leading-7 text-zinc-600">
           What do 2,000 Google Play reviews actually say about Strava? Using TF-IDF and
           Random Forest models in R, I identified the language patterns that separate
           satisfied users from frustrated ones — and what product teams should do about it.
@@ -287,16 +303,32 @@ export function StravaDashboard() {
                     </span>
                   </td>
                 </tr>
-                <tr>
-                  <td className="pt-3.5 pr-4 font-medium text-zinc-800">TF-IDF + LASSO</td>
-                  <td className="pt-3.5 pr-4 text-zinc-600">
+                <tr className="border-b border-zinc-900/5">
+                  <td className="py-3.5 pr-4 font-medium text-zinc-800">TF-IDF + LASSO</td>
+                  <td className="py-3.5 pr-4 text-zinc-600">
                     Text tokens
                     <span className="ml-2 text-[11px] text-zinc-400">(logistic regression)</span>
                   </td>
-                  <td className="pt-3.5 text-right font-semibold text-sky-700">82.0%</td>
-                  <td className="pt-3.5 pl-4 text-right">
+                  <td className="py-3.5 text-right font-semibold text-sky-700">82.0%</td>
+                  <td className="py-3.5 pl-4 text-right">
                     <span className="rounded-md bg-sky-50 px-2 py-0.5 font-semibold text-sky-700">
                       0.893
+                    </span>
+                  </td>
+                </tr>
+                <tr className="bg-sky-50/60">
+                  <td className="py-3.5 pr-4">
+                    <span className="font-semibold text-sky-800">Combination Model</span>
+                    <span className="ml-2 rounded-full bg-sky-500 px-2 py-0.5 text-[10px] font-semibold text-white">Best</span>
+                  </td>
+                  <td className="py-3.5 pr-4 text-zinc-600">
+                    TF-IDF score + behavioral
+                    <span className="ml-2 text-[11px] text-zinc-400">(Random Forest)</span>
+                  </td>
+                  <td className="py-3.5 text-right font-semibold text-sky-700">83.25%</td>
+                  <td className="py-3.5 pl-4 text-right">
+                    <span className="rounded-md bg-sky-100 px-2 py-0.5 font-semibold text-sky-800">
+                      0.9124
                     </span>
                   </td>
                 </tr>
@@ -305,8 +337,45 @@ export function StravaDashboard() {
           </div>
 
           <p className="mt-4 text-xs leading-5 text-zinc-500">
-            Text content is a stronger signal than behavioral metadata alone — adding language
-            features improved accuracy by +6.5 pp and AUC by +0.071.
+            Combining TF-IDF sentiment scores with behavioral features yielded the strongest results — each model addition improved both accuracy and AUC, with the combination model reaching 83.25% accuracy and AUC 0.9124.
+          </p>
+        </div>
+      </FadeIn>
+
+      {/* ── Feature Importance ── */}
+      <FadeIn delay={100} className="mt-8">
+        <div className="rounded-2xl border border-sky-700/15 bg-white/80 p-6">
+          <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-500">Combination Model</p>
+          <h2 className="mt-2 text-lg font-semibold text-zinc-900">Feature Importance</h2>
+          <p className="mt-1 text-sm text-zinc-500">
+            What the Random Forest weighted most when combining text and behavioral signals
+          </p>
+
+          <div className="mt-6 space-y-2.5">
+            {featureImportanceData.map((d, i) => {
+              const pct = (d.importance / featureImportanceData[0].importance) * 100;
+              const isTfidf = i === 0;
+              return (
+                <div key={d.feature} className="flex items-center gap-3">
+                  <span className="w-28 shrink-0 text-right text-xs font-medium text-zinc-600">
+                    {d.feature}
+                  </span>
+                  <div className="relative flex-1 overflow-hidden rounded-full bg-zinc-100" style={{ height: 10 }}>
+                    <div
+                      className={`h-full rounded-full transition-all ${isTfidf ? "bg-sky-500" : "bg-sky-300"}`}
+                      style={{ width: `${pct}%` }}
+                    />
+                  </div>
+                  <span className="w-16 shrink-0 text-right font-mono text-[11px] text-zinc-500">
+                    {d.importance.toFixed(1)}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+
+          <p className="mt-5 text-xs leading-5 text-zinc-500">
+            The TF-IDF sentiment score dominates at 350.9 — nearly 5× the next feature — confirming that text language is the primary driver of review sentiment. Behavioral features like hour of day, review length, and topic clusters provide meaningful secondary signal.
           </p>
         </div>
       </FadeIn>
@@ -398,71 +467,39 @@ export function StravaDashboard() {
         </div>
       </FadeIn>
 
-      {/* ── Theme Clusters ── */}
-      <FadeIn delay={100} className="mt-8">
-        <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-500">Pattern Recognition</p>
+      {/* ── Topic Modeling ── */}
+      <FadeIn delay={80} className="mt-12">
+        <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-500">LDA Topic Modeling</p>
         <h2 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900">
-          Theme Clusters
+          6 Latent Topics
         </h2>
         <p className="mt-2 text-sm text-zinc-500">
-          Tokens grouped by the underlying problem or strength they represent
+          Latent Dirichlet Allocation surfaced six distinct conversation clusters across all 2,000 reviews. Topic scores were used as features in the Random Forest and combination models.
         </p>
       </FadeIn>
 
-      <div className="mt-5 grid gap-4 sm:grid-cols-2">
-        <FadeIn delay={120} className="flex flex-col gap-4">
-          <div className="mb-2 flex items-center gap-2">
-            <div className="h-2 w-2 rounded-full bg-red-400" />
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-red-600">
-              Negative Clusters
-            </p>
-          </div>
-          {negativeClusters.map((cluster, i) => (
-            <FadeIn key={cluster.name} delay={140 + i * 50}>
-              <div className="rounded-xl border border-red-100 bg-red-50/60 p-4 transition hover:border-red-200 hover:bg-red-50">
-                <p className="text-sm font-semibold text-zinc-800">{cluster.name}</p>
-                <div className="mt-2 flex flex-wrap gap-1.5">
-                  {cluster.tokens.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-md border border-red-200 bg-white px-2 py-0.5 font-mono text-[11px] text-red-700"
-                    >
+      <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {topicClusters.map((topic, i) => {
+          const c = topicColorMap[topic.color];
+          return (
+            <FadeIn key={topic.id} delay={100 + i * 40}>
+              <div className={`rounded-xl border ${c.border} ${c.bg} p-4 transition hover:brightness-95`}>
+                <div className="flex items-center gap-2">
+                  <div className={`h-2 w-2 shrink-0 rounded-full ${c.dot}`} />
+                  <p className={`text-[11px] font-semibold uppercase tracking-[0.18em] ${c.label}`}>{topic.id}</p>
+                </div>
+                <p className="mt-1.5 text-sm font-semibold text-zinc-800">{topic.label}</p>
+                <div className="mt-2.5 flex flex-wrap gap-1.5">
+                  {topic.tokens.map((t) => (
+                    <span key={t} className={`rounded-md border font-mono text-[11px] px-2 py-0.5 ${c.tag}`}>
                       {t}
                     </span>
                   ))}
                 </div>
-                <p className="mt-2.5 text-xs leading-5 text-zinc-600">{cluster.insight}</p>
               </div>
             </FadeIn>
-          ))}
-        </FadeIn>
-
-        <FadeIn delay={140} className="flex flex-col gap-4">
-          <div className="mb-2 flex items-center gap-2">
-            <div className="h-2 w-2 rounded-full bg-emerald-400" />
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">
-              Positive Clusters
-            </p>
-          </div>
-          {positiveClusters.map((cluster, i) => (
-            <FadeIn key={cluster.name} delay={160 + i * 50}>
-              <div className="rounded-xl border border-emerald-100 bg-emerald-50/60 p-4 transition hover:border-emerald-200 hover:bg-emerald-50">
-                <p className="text-sm font-semibold text-zinc-800">{cluster.name}</p>
-                <div className="mt-2 flex flex-wrap gap-1.5">
-                  {cluster.tokens.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-md border border-emerald-200 bg-white px-2 py-0.5 font-mono text-[11px] text-emerald-700"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                <p className="mt-2.5 text-xs leading-5 text-zinc-600">{cluster.insight}</p>
-              </div>
-            </FadeIn>
-          ))}
-        </FadeIn>
+          );
+        })}
       </div>
 
       {/* ── Business Implications ── */}
@@ -516,9 +553,8 @@ export function StravaDashboard() {
 
       {/* ── Methodology ── */}
       <FadeIn delay={80} className="mt-12">
-        <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-500">How It Was Built</p>
         <h2 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900">
-          Methodology Pipeline
+          Methodology
         </h2>
       </FadeIn>
 
